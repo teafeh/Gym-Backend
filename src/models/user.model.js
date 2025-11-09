@@ -7,6 +7,7 @@ const userSchema = new mongoose.Schema(
     email: { type: String, unique: true, required: true },
     password: { type: String, required: true }, // <-- new field
     profileImage: { type: String, default: "" },
+    role: {type: String, default: "user"},
 
     // --- Membership Info ---
     membershipDueDate: { type: Date, default: null },
@@ -22,6 +23,7 @@ const userSchema = new mongoose.Schema(
     lastCheckIn: { type: Date, default: null },
     visitsByYear: { type: Map, of: Number, default: {} },
     membershipActive: { type: Boolean, default: false },
+    membershipRejected: { type: Boolean, default: false },
     membershipExpiresAt: {
       type: Date,
       default: () => new Date(Date.now() + 30 * 24 * 60 * 60 * 1000),

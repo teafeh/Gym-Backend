@@ -4,6 +4,7 @@ import { ENV } from "./src/config/env.js";
 import qrRoutes from "./src/routes/qr.routes.js";
 import connectDB from "./src/config/db.js";
 import cors from "cors";
+import adminRoutes from "./src/routes/admin.routes.js"
 import userRoutes from "./src/routes/user.routes.js";
 import checkinRoutes from "./src/routes/checkin.routes.js";
 
@@ -51,6 +52,7 @@ app.use("/uploads", express.static(path.join(process.cwd(), "uploads")));
 // =======================
 app.use("/api/qr", qrRoutes);
 app.use("/api/users", userRoutes);
+app.use("/api/admin", adminRoutes);
 app.use("/api/checkin", checkinRoutes);
 
 // Root route
