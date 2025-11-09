@@ -27,6 +27,12 @@ router.patch("/users/:userId/approve", approveUser);
 // Reject a pending user
 router.patch("/users/:userId/reject", rejectUser);
 router.get("/users/expiries", getMembershipExpiries);
+// Put user on hold
+router.patch("/users/:userId/hold", protect, holdUserMembership);
+
+// Activate user membership
+router.patch("/users/:userId/activate", protect, activateUserMembership);
+
 
 
 export default router;

@@ -92,3 +92,39 @@ export const getMembershipExpiries = async (req, res) => {
     res.status(500).json({ message: "Failed to fetch membership expiries" });
   }
 };
+
+
+export const holdUserMembership = async (req, res) => {
+  const { userId } = req.params;
+
+  try {
+    const user = await User.findById(userId);
+    if (!user) return res.status(404).json({ message: "User not found" });
+
+    user.membershipActive = false;
+    await user.save();
+
+    res.status(200).json({ message: "User membership put on hold", user });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: "Server error" });
+  }
+};
+
+// PATCH /api/admin/users/:userId/activate
+export const activateUserMembership = async (req, res) => {
+  const { userId } = req.params;
+
+  try {
+    const user = await User.findById(userId);
+    if (!user) return res.status(404).json({ message: "User not found" });
+
+    user.membershipActive = true;
+    await user.save();
+
+    res.status(200).json({ message: "User membership activated", user });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: "Server error" });
+  }
+};
