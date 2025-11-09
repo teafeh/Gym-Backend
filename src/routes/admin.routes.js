@@ -5,6 +5,8 @@ import {
   rejectUser,
   getAllUsers,
   getMembershipExpiries,
+  holdUserMembership,
+  activateUserMembership,
 } from "../controllers/admin.controller.js";
 import { protect } from "../middleware/auth.middleware.js";
 
