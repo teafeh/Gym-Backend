@@ -13,10 +13,10 @@ const app = express();
 // CORS CONFIGURATION ✅
 // =======================
 const allowedOrigins = [
+  "https://gym-react-app-orpin.vercel.app",
   "http://localhost:5173",
   "http://10.30.65.121:5173",
   "http://127.0.0.1:5500",
-  "https://gym-react-app-orpin.vercel.app",
 ];
 
 app.use(
